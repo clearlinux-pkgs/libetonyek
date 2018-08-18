@@ -1,0 +1,173 @@
+libetonyek 0.1.8
+
+- All formats:
+  + Parse fields.
+  + Improve parsing of lists.
+  + Fix output of orphans and widows paragraph properties.
+  + Correctly handle rectangles with rounded corners.
+  + Improve output of callouts.
+  + Parse line ends (arrows).
+  + Parse curves with multiple components.
+  + Improve parsing of fills.
+  + Improve parsing of tables.
+  + Handle cropped images.
+  + Parse grouped shapes.
+  + Parse audio/video preview images.
+  + Parse text wrap.
+- Keynote 2-5:
+  + Parse old-style images (Keynote 2-3?).
+  + Parse slide styles.
+  + Output master slides.
+  + Parse connection lines.
+- Keynote 6:
+  + Improve detection of Keynote 6 documents. (tdf#113737)
+  + Output master slides.
+  + Parse connection lines.
+- Numbers 1-2:
+  + Properly parse TRUE and FALSE functions.
+- Pages 1-4:
+  + Parse annotations.
+  + Improve parsing of images (position etc.).
+  + Handle tables in a group.
+  + Parse page dimensions from print settings.
+- Pages 5:
+  + Parse page dimensions.
+  + Parse footnotes/endnotes.
+  + Parse comments.
+  + Parse headers/footers.
+  + Parse tables.
+  + Parse textboxes.
+  + Fix line spacing and paragraph margins.
+  + Parse more text properties.
+- Miscellaneous:
+  + Add support for Keynote 1 documents.
+  + Add support for Numbers 3 documents.
+  + Fix several issues found by oss-fuzz.
+  + Fix build with glm 0.9.9.
+  + Other fixes and improvements.
+
+libetonyek 0.1.7
+
+- Fix a few issues found by Coverity.
+- Correctly compute cell row and column.
+- Improve reconstruction of gradients.
+- Improve resolution of cell styles.
+- Parse non-RGB colors.
+- Improve handling of table border lines.
+- Convert cell values to text in presentation and text documents.
+- Handle following-paragraph and following-layout styles.
+- Allow building with different versions of mdds (1.2 is the default).
+- Require C++11 for build.
+- Fix several issues found by oss-fuzz.
+- Disable error output from libxml2.
+- Improve lookup of parent styles.
+- Never insert a page break in a footnote.
+- Drop outdated MSVC project files.
+- Various small fixes and improvements.
+
+libetonyek 0.1.6
+
+- All formats:
+  + Improved handling of text language, e.g., written language props now
+    include country and script.
+- Keynote 6:
+  + Parse links.
+  + Parse text language.
+  + Parse lists (bullets).
+  + Resize tables properly.
+  + Fix handling of texts containing non-ASCII characters (i.e., the
+    majority of non-English languages).
+- Miscellaneous:
+  + Fix build with boost 1.54/1.55.
+  + Make help output of conversion tools more help2man-friendly.
+  + Fix build with recent clang, which does not like 'register' keyword.
+  + Various small fixes and improvements.
+
+libetonyek 0.1.5
+
+- Parse slide background.
+- Parse shape style: fill, line stroke, opacity, shadow.
+- Parse table style: default cell borders, background etc.
+- Various fixes and improvements.
+
+libetonyek 0.1.4
+
+- Parse formulas.
+- Parse cell type and number format.
+- Require mdds 1.0 by default (but 0.12.1 is still supported).
+- Add support for Keynote 6. Imported features include: shapes, images,
+  text + text formatting, presentation notes, tables (only simple tables
+  are supported.)
+
+libetonyek 0.1.3
+
+- Common:
+  + Import more text formatting properties.
+  + Correctly interpret properties set by paragraph style, but turned
+    off in character style.
+  + Import paragraph borders.
+  + Import metadata.
+  + Collect styles and other referenceable entities even from skipped
+    parts of the input.
+  + Fix a typo that caused shapes being dropped from output.
+  + Import table borders.
+  + Add dependency on mdds.
+  + Various small bugfixes and improvements.
+- Pages:
+  + Import headers and footers.
+  + Import footnotes and endnotes.
+  + Import images.
+  + Import shapes.
+  + Import text columns.
+  + Accept documents created by Pages 1-3.
+- Numbers:
+  + Accept documents created by Numbers 1.
+
+libetonyek 0.1.2
+
+- Use symbol visibility on Linux. The library only exports the two public
+  functions now.
+- Refactor the parser to allow sharing of code among Keynote, Pages and
+  Numbers parsers.
+- Add initial support for Pages (v. 4 only): text and text formatting,
+  tables.
+- Parse text language.
+- Parse links.
+- Fix parsing of tab stops.
+- Add dependency on glm.
+- Add initial support for Numbers (v. 2 only): sheets and cell content.
+- Fix parsing of simple cell text content, which was ignored previously.
+- Various small bugfixes and improvements.
+
+libetonyek 0.1.1
+
+- Fix detection of Keynote 3 documents.
+
+libetonyek 0.1.0
+
+- switch to librevenge
+- add BIPU support for import of Pages documents
+- add skeleton for (future) import of Numbers spreadsheets
+
+libetonyek 0.0.3
+
+- import text formatting attributes
+- draw rounded rectangles and callouts
+
+libetonyek 0.0.2
+
+- fixed build with older boost
+- implemented import of tables
+- implemented import of presentation notes
+- implemented import of sticky notes
+
+libetonyek 0.0.1
+
+- build fixes
+- improved input format detection
+- minor cleanups
+
+libetonyek 0.0.0
+
+- first release
+- see FEATURES for what is currently supported
