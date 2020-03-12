@@ -4,7 +4,7 @@
 #
 Name     : libetonyek
 Version  : 0.1.9
-Release  : 3
+Release  : 4
 URL      : https://dev-www.libreoffice.org/src/libetonyek-0.1.9.tar.xz
 Source0  : https://dev-www.libreoffice.org/src/libetonyek-0.1.9.tar.xz
 Summary  : Library for parsing Apple Keynote file format structure
@@ -46,6 +46,7 @@ Group: Development
 Requires: libetonyek-lib = %{version}-%{release}
 Requires: libetonyek-bin = %{version}-%{release}
 Provides: libetonyek-devel = %{version}-%{release}
+Requires: libetonyek = %{version}-%{release}
 
 %description dev
 dev components for the libetonyek package.
@@ -78,29 +79,34 @@ license components for the libetonyek package.
 
 %prep
 %setup -q -n libetonyek-0.1.9
+cd %{_builddir}/libetonyek-0.1.9
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-export LANG=C
-export SOURCE_DATE_EPOCH=1553134003
-export LDFLAGS="${LDFLAGS} -fno-lto"
-%configure --disable-static --with-mdds=1.4
+export LANG=C.UTF-8
+export SOURCE_DATE_EPOCH=1583992798
+export GCC_IGNORE_WERROR=1
+export CFLAGS="$CFLAGS -fno-lto "
+export FCFLAGS="$CFLAGS -fno-lto "
+export FFLAGS="$CFLAGS -fno-lto "
+export CXXFLAGS="$CXXFLAGS -fno-lto "
+%configure --disable-static --with-mdds=1.5
 make  %{?_smp_mflags}
 
 %check
-export LANG=C
+export LANG=C.UTF-8
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1553134003
+export SOURCE_DATE_EPOCH=1583992798
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/libetonyek
-cp COPYING %{buildroot}/usr/share/package-licenses/libetonyek/COPYING
+cp %{_builddir}/libetonyek-0.1.9/COPYING %{buildroot}/usr/share/package-licenses/libetonyek/9744cedce099f727b327cd9913a1fdc58a7f5599
 %make_install
 
 %files
@@ -136,4 +142,4 @@ cp COPYING %{buildroot}/usr/share/package-licenses/libetonyek/COPYING
 
 %files license
 %defattr(0644,root,root,0755)
-/usr/share/package-licenses/libetonyek/COPYING
+/usr/share/package-licenses/libetonyek/9744cedce099f727b327cd9913a1fdc58a7f5599
