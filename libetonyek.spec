@@ -4,7 +4,7 @@
 #
 Name     : libetonyek
 Version  : 0.1.9
-Release  : 4
+Release  : 5
 URL      : https://dev-www.libreoffice.org/src/libetonyek-0.1.9.tar.xz
 Source0  : https://dev-www.libreoffice.org/src/libetonyek-0.1.9.tar.xz
 Summary  : Library for parsing Apple Keynote file format structure
