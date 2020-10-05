@@ -4,7 +4,7 @@
 #
 Name     : libetonyek
 Version  : 0.1.9
-Release  : 5
+Release  : 6
 URL      : https://dev-www.libreoffice.org/src/libetonyek-0.1.9.tar.xz
 Source0  : https://dev-www.libreoffice.org/src/libetonyek-0.1.9.tar.xz
 Summary  : Library for parsing Apple Keynote file format structure
@@ -24,6 +24,7 @@ BuildRequires : pkgconfig(librevenge-generators-0.0)
 BuildRequires : pkgconfig(libxml-2.0)
 BuildRequires : pkgconfig(zlib)
 BuildRequires : sed
+Patch1: fix-build.patch
 
 %description
 libetonyek is a library and a set of tools for reading and converting
@@ -80,17 +81,18 @@ license components for the libetonyek package.
 %prep
 %setup -q -n libetonyek-0.1.9
 cd %{_builddir}/libetonyek-0.1.9
+%patch1 -p1
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1583992798
+export SOURCE_DATE_EPOCH=1601862681
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fno-lto "
-export FCFLAGS="$CFLAGS -fno-lto "
-export FFLAGS="$CFLAGS -fno-lto "
+export FCFLAGS="$FFLAGS -fno-lto "
+export FFLAGS="$FFLAGS -fno-lto "
 export CXXFLAGS="$CXXFLAGS -fno-lto "
 %configure --disable-static --with-mdds=1.5
 make  %{?_smp_mflags}
@@ -100,10 +102,10 @@ export LANG=C.UTF-8
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-make VERBOSE=1 V=1 %{?_smp_mflags} check
+make %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1583992798
+export SOURCE_DATE_EPOCH=1601862681
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/libetonyek
 cp %{_builddir}/libetonyek-0.1.9/COPYING %{buildroot}/usr/share/package-licenses/libetonyek/9744cedce099f727b327cd9913a1fdc58a7f5599
